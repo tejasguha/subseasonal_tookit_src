@@ -190,7 +190,7 @@ def download_meto_sst_tenth_week():
     
     meto_filenames = downloader.list_subdir_files(os.path.join("ground_truth", "sst_1d")).split("MiB")
     meto_filenames = [i[:i.find(";")].strip() for i in meto_filenames] # clean up content length output
-    meto_filenames = meto_filenames[1::2] # remove content length stuff in file name list
+    meto_filenames = meto_filenames[1:-1] # remove non-filename stuff from list
     filenames_dates = [f for f in meto_filenames if f[-11:-3] in dates_str]
     for f in filenames_dates:
         downloader.download_file(data_subdir=os.path.join("ground_truth", "sst_1d"), filename=f)
@@ -208,9 +208,7 @@ def download_meto_sst_tenth_week():
         #delete old file before saving updated file
         if os.path.isfile(cmd_dst_filename):
             subprocess.call(f"rm {cmd_dst_filename}", shell=True)
-        print(cmd)
         subprocess.call(cmd, shell=True)
-        print("YAY WE DID IT!!!\n")
     print("Done!\n")
  
 
