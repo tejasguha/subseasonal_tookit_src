@@ -1,0 +1,8 @@
+__pycache__/*
+models/*/__pycache__/*
+*.h5
+utils/__pycache__/*
+*.pyc
+*.log
+models/salient2/raw-processed/*
+models/salient2/predict-data/*
